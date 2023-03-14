@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import Notes from "./Notes.js";
+import Profile from "./models/index.js"
 import { config } from "dotenv"
 
 config()
@@ -13,7 +13,7 @@ app.use(express.json())
 
 app.post('/starts', async (req, res) => {
     try {
-        const note = await Notes.create({ ...req.body })
+        const note = await Profile.create({ ...req.body })
         res.json(note)
     } catch (err) {
         console.log(err);
@@ -21,7 +21,6 @@ app.post('/starts', async (req, res) => {
 })
 
 const startApp = async () => {
-    console.log(DB_URL);
     try {
         await mongoose.connect(DB_URL, { useUnifiedTopology: true, useNewUrlParser: true })
         app.listen(PORT, () => console.log("PORT HAS STARTED ON" + PORT))
