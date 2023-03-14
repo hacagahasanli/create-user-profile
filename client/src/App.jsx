@@ -1,14 +1,13 @@
-import { useState } from "react"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
+import ky from "ky"
 
 const App = () => {
   const [profiles, setProfiles] = useState()
 
   useEffect(() => {
     const getAllProfiles = async () => {
-      const res = await fetch('http://localhost:5000/ms/all-profiles');
-      const data = await res.json();
-      setProfiles(data)
+      const profiles = await ky.get('http://localhost:5000/ms/all-profiles').json();
+      setProfiles(profiles)
     }
     getAllProfiles()
   }, [])
