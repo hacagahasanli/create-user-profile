@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
-import Profile from "./models/index.js"
 import { config } from "dotenv"
+import router from "./router/index.js";
 
 config()
 
@@ -10,15 +10,7 @@ const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@
 
 const app = express()
 app.use(express.json())
-
-app.post('/starts', async (req, res) => {
-    try {
-        const note = await Profile.create({ ...req.body })
-        res.json(note)
-    } catch (err) {
-        console.log(err);
-    }
-})
+app.use('/ms', router)
 
 const startApp = async () => {
     try {
