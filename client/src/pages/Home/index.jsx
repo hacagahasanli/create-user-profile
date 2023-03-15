@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
-import { Card, Form } from "../../components"
 import { getAllProfiles } from "../../store"
+import { Card, Form } from "../../components"
+import { useDispatch, useSelector } from "react-redux"
 
 export const Home = () => {
     const dispatch = useDispatch()

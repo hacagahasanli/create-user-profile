@@ -27,9 +27,6 @@ const validationSchema = Yup.object().shape({
 export const Form = () => {
     const dispatch = useDispatch()
 
-    const { newProfile } = useSelector(state => state.profile)
-    console.log(newProfile, "NEW PROFILE")
-
     const initialValues = {
         author: '',
         title: '',

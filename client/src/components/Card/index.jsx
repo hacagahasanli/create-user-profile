@@ -26,7 +26,7 @@ const flexHelper = css`
 
 const Detail = styled.div`
     ${flexHelper}
-
+    gap:0.3rem;
 `
 
 const ImageWrapper = styled.div`
@@ -48,6 +48,7 @@ const CardContainer = styled.div`
     place-items: center;
     margin: 0 auto;
     gap:2rem;
+    color: #ffffff;
     
 `
 
