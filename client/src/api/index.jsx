@@ -1,3 +1,12 @@
 import ky from "ky";
 
-export const all_profiles = () => ky.get('http://localhost:5000/ms/all-profiles').json()
+const api = ky.create({ prefixUrl: 'http://localhost:5000/ms' });
+
+// const secureApi = api.extend({
+//     headers:{
+
+//     }
+// })
+
+export const all_profiles = async () => await api.get(`all-profiles`).json()
+export const create_profile = async (profile) => await api.post(`new-profile`, { json: profile }).json()
