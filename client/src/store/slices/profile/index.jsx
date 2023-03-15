@@ -2,6 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     allProfiles: [],
+    modalShow: false,
+    selectedProfile: {
+        index: 0,
+        profile: {}
+    }
 }
 
 const ProfileSlice = createSlice({
@@ -21,6 +26,7 @@ const ProfileSlice = createSlice({
             state.allProfiles = [...state.allProfiles, profile]
         },
         getEditedProfile: (profile) => profile
+
     }
 })
 

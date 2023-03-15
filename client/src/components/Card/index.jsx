@@ -1,8 +1,10 @@
+import { useDispatch } from "react-redux"
 import styled, { css } from "styled-components"
 
 export const Card = ({ profiles }) => {
+    const dispatch = useDispatch()
 
-    const editHandler = (profile) => {
+    const editHandler = (profile, index) => {
 
     }
 
@@ -18,7 +20,7 @@ export const Card = ({ profiles }) => {
                     <span>{title}</span>
                     <span>{content}</span>
                 </Detail>
-                <button onClick={() => editHandler(profile)}>Edit</button>
+                <button onClick={() => editHandler(profile, index)}>Edit</button>
             </CardWrapper>
         })
     }
