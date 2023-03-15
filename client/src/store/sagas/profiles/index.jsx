@@ -1,6 +1,6 @@
 import { call, fork, put, takeLatest } from "redux-saga/effects";
-import { all_profiles, create_profile } from "../../../api";
-import { getAllProfiles, setAllProfiles, createProfile, setProfile } from "../../slices/profile";
+import { all_profiles, create_profile, update_profile } from "../../../api";
+import { getAllProfiles, setAllProfiles, createProfile, setProfile, getEditedProfile } from "../../slices/profile";
 
 function* GetAllProfilesAsync() {
     try {
@@ -20,8 +20,21 @@ function* CreateProfileAsync({ payload }) {
     }
 }
 
+function* UpdateProfileAsync({ payload }) {
+    try {
+        const updatedProfile = yield call(update_profile, payload)
+        console.log(updatedProfile);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 function* GetAllProfiles() {
     yield takeLatest(getAllProfiles, GetAllProfilesAsync)
+}
+
+function* GetUpdatedProfile() {
+    yield takeLatest(getEditedProfile, UpdateProfileAsync)
 }
 
 function* GetCreatedProfile() {
@@ -31,4 +44,5 @@ function* GetCreatedProfile() {
 export const profileSaga = [
     fork(GetAllProfiles),
     fork(GetCreatedProfile),
+    fork(GetUpdatedProfile)
 ];

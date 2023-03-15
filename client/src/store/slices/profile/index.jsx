@@ -19,9 +19,10 @@ const ProfileSlice = createSlice({
         setProfile: (state, action) => {
             const profile = action.payload;
             state.allProfiles = [...state.allProfiles, profile]
-        }
+        },
+        getEditedProfile: (profile) => profile
     }
 })
 
-export const { getAllProfiles, setAllProfiles, createProfile, setProfile } = ProfileSlice.actions
+export const { getAllProfiles, setAllProfiles, createProfile, setProfile, getEditedProfile } = ProfileSlice.actions
 export const profileReducer = ProfileSlice.reducer

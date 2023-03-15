@@ -1,9 +1,15 @@
 import styled, { css } from "styled-components"
 
 export const Card = ({ profiles }) => {
+
+    const editHandler = (profile) => {
+
+    }
+
     return <CardContainer> {
-        profiles?.map(({ _id, author, title, content }) => (
-            <CardWrapper key={_id}>
+        profiles?.map((profile) => {
+            const { _id, author, title, content } = profile
+            return <CardWrapper key={_id}>
                 <ImageWrapper>
                     <img src="https://images.pexels.com/photos/5267663/pexels-photo-5267663.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="profile_logo" />
                 </ImageWrapper>
@@ -12,8 +18,9 @@ export const Card = ({ profiles }) => {
                     <span>{title}</span>
                     <span>{content}</span>
                 </Detail>
+                <button onClick={() => editHandler(profile)}>Edit</button>
             </CardWrapper>
-        ))
+        })
     }
     </CardContainer>
 }
@@ -58,4 +65,12 @@ const CardWrapper = styled.div`
     gap: 1rem;
     width: 100%;
     min-height: 300px;
+
+    button{
+        width:100%;
+        padding:0.4rem;
+        font-weight: 600;
+        font-size: .9rem;
+        cursor: pointer;
+    }
 `
