@@ -1,20 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { profileReducer } from "./slices/profile";
-import createSagaMiddleware from '@redux-saga/core';
-import rootSaga from "./sagas/rootSaga";
+//sagas
+import { getAllProfiles } from "./slices/profile";
+import store from "./store";
 
-const sagaMiddleware = createSagaMiddleware()
+export {
+    //store 
+    store,
 
-const store = configureStore({
-    reducer: {
-        profile: profileReducer
-    },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({ thunk: false, serializableCheck: false }).concat(
-            sagaMiddleware
-        ),
-})
-
-sagaMiddleware.run(rootSaga);
-
-export default store;
+    //sagas
+    getAllProfiles
+}

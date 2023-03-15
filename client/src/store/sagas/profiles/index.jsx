@@ -1,13 +1,13 @@
-import { call, fork, takeLatest } from "redux-saga/effects";
+import { call, fork, put, takeLatest } from "redux-saga/effects";
 import { all_profiles } from "../../../api";
-import { getAllProfiles } from "../../slices/profile";
+import { getAllProfiles, setAllProfiles } from "../../slices/profile";
 
 
 
 function* GetAllProfilesAsync({ payload }) {
     try {
         const profiles = yield call(all_profiles);
-        console.log(profiles, 'PROFILES');
+        yield put(setAllProfiles(profiles))
     } catch (err) {
         console.log(err);
     }

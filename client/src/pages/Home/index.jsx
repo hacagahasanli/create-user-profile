@@ -1,18 +1,18 @@
 import { useEffect } from "react"
-import { getAllProfiles } from "../../store/slices/profile"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Card } from "../../components"
+import { getAllProfiles } from "../../store"
 
-const Home = () => {
+export const Home = () => {
     const dispatch = useDispatch()
+    const { allProfiles } = useSelector(state => state.profile)
 
     useEffect(() => {
         dispatch(getAllProfiles())
     }, [])
 
     return <>
-        <Card />
+        <Card profiles={allProfiles} />
     </>
 }
 
-export default Home

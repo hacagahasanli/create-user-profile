@@ -18,5 +18,5 @@ const ProfileSlice = createSlice({
     }
 })
 
-export const { getAllProfiles } = ProfileSlice.actions
+export const { getAllProfiles, setAllProfiles } = ProfileSlice.actions
 export const profileReducer = ProfileSlice.reducer
