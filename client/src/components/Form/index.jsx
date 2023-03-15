@@ -21,7 +21,12 @@ const validationSchema = Yup.object().shape({
     content: Yup.string()
         .min(15, min('Content', 15))
         .max(100, min('Content', 100))
-        .required(req('Content'))
+        .required(req('Content')),
+    image: Yup.mixed()
+        .test("fileType", "Only images are allowed", (value) => {
+            return value && ['image/jpeg', 'image/png', 'image/gif'].includes(value.type)
+        })
+        .required("Please upload an image"),
 })
 
 export const Form = () => {
@@ -30,7 +35,8 @@ export const Form = () => {
     const initialValues = {
         author: '',
         title: '',
-        content: ''
+        content: '',
+        image: ''
     };
 
     const submitHandler = (values, { setSubmitting }) => {
