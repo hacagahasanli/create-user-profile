@@ -1,6 +1,7 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import createSagaMiddleware from '@redux-saga/core';
+import { configureStore } from "@reduxjs/toolkit";
 import { profileReducer } from "./slices/profile";
+import createSagaMiddleware from '@redux-saga/core';
+import rootSaga from "./sagas/rootSaga";
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -8,11 +9,12 @@ const store = configureStore({
     reducer: {
         profile: profileReducer
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false, seriziableCheck: false }).concat(
-        sagaMiddleware
-    ),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({ thunk: false, serializableCheck: false }).concat(
+            sagaMiddleware
+        ),
 })
 
-sagaMiddleware.run();
+sagaMiddleware.run(rootSaga);
 
 export default store;

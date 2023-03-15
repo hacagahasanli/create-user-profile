@@ -1,4 +1,4 @@
-import { takeLatest } from "redux-saga/effects";
+import { call, fork, takeLatest } from "redux-saga/effects";
 import { all_profiles } from "../../../api";
 import { getAllProfiles } from "../../slices/profile";
 
