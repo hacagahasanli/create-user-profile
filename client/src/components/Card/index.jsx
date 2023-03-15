@@ -23,12 +23,10 @@ const flexHelper = css`
     flex-direction: column;
     align-items: center;
 `
-
 const Detail = styled.div`
     ${flexHelper}
     gap:0.3rem;
 `
-
 const ImageWrapper = styled.div`
     width: 100%;
     img{
@@ -40,7 +38,6 @@ const ImageWrapper = styled.div`
         border-top-left-radius: 8px;
     }
 `
-
 const CardContainer = styled.div`
     width: 100%;
     display: grid;
@@ -51,7 +48,6 @@ const CardContainer = styled.div`
     color: #ffffff;
     
 `
-
 const CardWrapper = styled.div`
     margin: 0;
     padding: 0;

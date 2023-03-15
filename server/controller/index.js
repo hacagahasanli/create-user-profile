@@ -1,5 +1,6 @@
 import CreateProfile from "../services/CreateProfile/index.js"
 import AllProfiles from "../services/AllProfiles/index.js"
+import UpdateProfile from "../services/UpdateProfile/index.js"
 
 class ProfileController {
     async create(req, res) {
@@ -15,6 +16,15 @@ class ProfileController {
         try {
             const profiles = await AllProfiles.getAll()
             res.json(profiles)
+        } catch (err) {
+            res.status(500).json(err.message)
+        }
+    }
+    async update(req, res) {
+        try {
+            const profile = req.body
+            const updatedProfile = await UpdateProfile.updateProfile(profile);
+            res.json(updatedProfile)
         } catch (err) {
             res.status(500).json(err.message)
         }

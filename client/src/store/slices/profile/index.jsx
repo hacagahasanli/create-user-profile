@@ -8,9 +8,7 @@ const ProfileSlice = createSlice({
     name: "ProfileSlice",
     initialState,
     reducers: {
-        getAllProfiles: () => {
-            return
-        },
+        getAllProfiles: () => { },
         setAllProfiles: (state, action) => {
             const profiles = action.payload;
             state.allProfiles = [...profiles]

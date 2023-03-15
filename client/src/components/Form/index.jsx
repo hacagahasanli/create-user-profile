@@ -34,29 +34,38 @@ export const Form = () => {
     };
 
     const submitHandler = (values, { setSubmitting }) => {
-        console.log(values, "VALUES");
         setSubmitting(false)
         dispatch(createProfile(values))
     }
 
+    const labels = [
+        {
+            value: "Author",
+            id: "author",
+            name: "author"
+        },
+        {
+            value: "Title",
+            id: "title",
+            name: "title"
+        },
+        {
+            value: "Content",
+            id: "content",
+            name: "content",
+        },
+    ]
+
     return <Formik initialValues={initialValues} onSubmit={submitHandler} validationSchema={validationSchema}>
         {({ isSubmitting }) => (
             <StyledForm>
-                <label htmlFor="author">
-                    Author:
-                    <Input id="author" name="author" type="text" />
-                    <ErrorMessage name="author" />
-                </label>
-                <label htmlFor="title">
-                    Title:
-                    <Input id="title" name="title" type="text" />
-                    <ErrorMessage name="title" />
-                </label>
-                <label htmlFor="content">
-                    Content
-                    <Input id="content" name="content" type="text" />
-                    <ErrorMessage name="content" style={{ color: "red" }} />
-                </label>
+                {labels?.map(({ value, id, name, type = "text" }) => (
+                    <label htmlFor={id} key={id}>
+                        {value}:
+                        <Input {...{ id, name, type }} />
+                        <ErrorMessage {...{ name }} />
+                    </label>
+                ))}
                 <button type="submit" disabled={isSubmitting}>{"Add Profile"}</button>
             </StyledForm>
         )}
@@ -81,7 +90,6 @@ const StyledForm = styled(Formi)`
         margin: 0 auto;
     }
 `
-
 const Input = styled(Field)`
     width: 100%;
     padding: 0.3rem;
