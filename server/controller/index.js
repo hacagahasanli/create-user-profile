@@ -5,9 +5,12 @@ import UpdateProfile from "../services/UpdateProfile/index.js"
 class ProfileController {
     async create(req, res) {
         try {
-            const body = req.body
-            const addedProfile = await CreateProfile.create(body)
-            res.json(addedProfile)
+            const { author } = req.body
+            const file = req.image;
+            console.log(file, "FILE")
+            console.log(body, "BODy");
+            // const addedProfile = await CreateProfile.create(body)
+            // res.json(addedProfile)
         } catch (err) {
             res.status(500).json(err.message)
         }

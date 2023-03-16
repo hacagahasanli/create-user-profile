@@ -15,7 +15,11 @@ export const Card = ({ profiles }) => {
                 <ImageWrapper>
                     <img src="https://images.pexels.com/photos/5267663/pexels-photo-5267663.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="profile_logo" />
                 </ImageWrapper>
-
+                <Detail>
+                    <span>{author}</span>
+                    <span>{title}</span>
+                    <span>{content}</span>
+                </Detail>
                 <button onClick={() => editHandler(profile, index)}>Edit</button>
             </CardWrapper>
         })
